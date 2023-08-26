@@ -1,0 +1,40 @@
+.sub__category-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid transparent;
+  position: relative;
+  border-radius: 8px;
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: all 0.4s;
+  }
+  &:hover {
+    &::before {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+  img {
+    max-height: 150px;
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    @media (max-width: 767px){
+      font-size: 14px;
+    }
+  }
+}
