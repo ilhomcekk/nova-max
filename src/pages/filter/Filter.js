@@ -29,6 +29,8 @@ import { getProductGalleryAll } from "../../redux/actions/filterActions";
 import { subCategoryFilter } from "../../redux/actions/categoryActions";
 import { IoIosArrowDown } from "react-icons/io";
 import ProductSkelet from "../../component/loading/ProductSkelet";
+import FilterSwitch from "./FilterSwitch";
+import Title from "../../component/Title/Title";
 
 export default function Filter() {
   const location = useLocation();
@@ -189,7 +191,7 @@ export default function Filter() {
                   </Accordion>
                 </>
               )}
-              {/* <Title name="Фильтры" />
+              <Title name="Фильтры" />
               <div
                 className="flex gap-4 flex-col items-center justify-between mb-2"
                 style={{ width: "-webkit-fill-available" }}
@@ -231,8 +233,8 @@ export default function Filter() {
                   input={item}
                   handleFilter={handleFilter}
                 />
-              ))} */}
-              {/* <div className="filter__buttons flex">
+              ))}
+              <div className="filter__buttons flex">
                 <button
                   onClick={() => {
                     let newFilter = {
@@ -255,7 +257,7 @@ export default function Filter() {
                 >
                   Сбросить
                 </button>
-              </div> */}
+              </div>
             </div>
             <div className="all__products">
               {/* <div className="products__menu">

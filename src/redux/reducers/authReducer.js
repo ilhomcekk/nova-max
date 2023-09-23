@@ -33,7 +33,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
       return { ...state, loading: true, message: "" };
     case "auth_get_code_error":
       return { ...state, message: payload, loading: false };
-      case "auth_get_code_success":
+    case "auth_get_code_success":
       window.localStorage.setItem("novamarktToken", payload.data.token);
       return {
         ...state,
@@ -48,7 +48,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
     case "auth_login_error":
       return { ...state, message: payload, loading: false };
     case "auth_login_success":
-      window.localStorage.setItem("novamarktToken", payload.token);
+      window.localStorage.setItem("novamarktToken", payload?.data?.token);
       return {
         ...state,
         loading: false,

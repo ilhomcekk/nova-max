@@ -18,7 +18,8 @@ const ErrorModal = ({ showModal, onClose, text }) => {
           <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
             <Button
               onClick={() => {
-                navigate("/register");
+                navigate("/firstregister");
+                onClose();
               }}
               variant="outlined"
               color="error"
@@ -28,6 +29,7 @@ const ErrorModal = ({ showModal, onClose, text }) => {
             <Button
               onClick={() => {
                 navigate("/firstregister");
+                onClose();
               }}
               variant="outlined"
               color="primary"

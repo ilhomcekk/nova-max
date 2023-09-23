@@ -45,6 +45,7 @@ import NavbarMenu from "../../container/NavbarMenu";
 import ErrorModal from "../../component/ErrorModal/ErrorModal";
 import { ProductOrderLoading } from "../../component/loading/ProductOrderLoading";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const API = `${process.env.REACT_APP_API_DOMAIN}`;
 const language = window.localStorage.getItem("novamarkt-Content-language");
@@ -70,6 +71,7 @@ const Add = () => {
   const [rate, setRate] = useState("");
 
   useEffect(() => {
+    // axios.get("");
     dispatch(getProductOne(id));
     dispatch(relatedProducts(id));
     dispatch(getComments(id));
@@ -95,8 +97,8 @@ const Add = () => {
   const { loading3 } = useSelector((state) => state.cart);
   const [favorite, setFavorite] = useState(productOne?.shop?.isFavorite);
   const comments = useSelector((state) => state.cart.commentList);
-  const related_products = useSelector(
-    (state) => state.product.related_products
+  const related_products = useSelector((state) =>
+    state.product.related_products?.filter((item) => +item?.id !== +id)
   );
   const desc = String(productOne.description);
   const comp = String(productOne.composition);
@@ -186,6 +188,9 @@ const Add = () => {
       setFavoriteAdd(false);
     }
   }, [favoritesId, favoriteList]);
+
+  let oneRating =
+    productOne?.reviews_count === 0 ? 0 : 100 / productOne?.reviews_count;
 
   const [price_old, setPriceOld] = useState();
   const handlePriceOld = async () => {
@@ -291,7 +296,7 @@ const Add = () => {
                   </div>
                   <ImageGallery
                     items={gallery}
-                    autoPlay={true}
+                    autoPlay={false}
                     thumbnailPosition={"bottom"}
                     showPlayButton={false}
                     showBullets={true}
@@ -510,7 +515,6 @@ const Add = () => {
                               <div style={{ color: "#909090" }}>{item}</div>
                             ))}
                           </div>
-                          {console.log(item.value_name?.split(","))}
                         </div>
                       ))}
                   </div>
@@ -534,7 +538,9 @@ const Add = () => {
                         <div className="lines">
                           <div className="flex flex-row w-full">
                             <ProgressBarLine
-                              value={productOne?.review_separate?.rate_5 * 100}
+                              value={
+                                productOne?.review_separate?.rate_5 * oneRating
+                              }
                               strokeWidth={1}
                             />
                             <div className="w-4">
@@ -545,7 +551,9 @@ const Add = () => {
                         <div className="lines">
                           <div className="flex flex-row w-full">
                             <ProgressBarLine
-                              value={productOne?.review_separate?.rate_4 * 100}
+                              value={
+                                productOne?.review_separate?.rate_4 * oneRating
+                              }
                               strokeWidth={1}
                             />
                             <div className="w-4">
@@ -556,7 +564,9 @@ const Add = () => {
                         <div className="lines">
                           <div className="flex flex-row w-full">
                             <ProgressBarLine
-                              value={productOne?.review_separate?.rate_3 * 100}
+                              value={
+                                productOne?.review_separate?.rate_3 * oneRating
+                              }
                               strokeWidth={1}
                             />
                             <div className="w-4">
@@ -567,7 +577,9 @@ const Add = () => {
                         <div className="lines">
                           <div className="flex flex-row w-full">
                             <ProgressBarLine
-                              value={productOne?.review_separate?.rate_2 * 100}
+                              value={
+                                productOne?.review_separate?.rate_2 * oneRating
+                              }
                               strokeWidth={1}
                             />
                             <div className="w-4">
@@ -578,7 +590,9 @@ const Add = () => {
                         <div className="lines">
                           <div className="flex flex-row w-full">
                             <ProgressBarLine
-                              value={productOne?.review_separate?.rate_1 * 100}
+                              value={
+                                productOne?.review_separate?.rate_1 * oneRating
+                              }
                               strokeWidth={1}
                             />
                             <div className="w-4">
@@ -875,7 +889,7 @@ const Add = () => {
             </div>
           </MContainer>
           <MContainer className="c-products pb-8">
-            <Title name="Похожие товары" />
+            {related_products?.length > 1 && <Title name="Похожие товары" />}
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
               {related_products?.slice(0, slice).map((related, idx) => (
                 <Cart key={idx} product={related} />

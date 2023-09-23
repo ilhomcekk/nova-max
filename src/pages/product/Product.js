@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { MContainer } from "../../element/Elemens";
 import "../../assets/scss/_product.scss";
+import "../../assets/scss/_modal.scss";
 import NavbarMenu from "../../container/NavbarMenu";
 import { Cart } from "../../component/Cart/Cart";
 import Title from "../../component/Title/Title";
@@ -27,6 +28,16 @@ import { getNews } from "../../redux/actions/newsActions";
 import SliderMobile from "../../component/Slider/SliderMobile";
 import ProductSkelet from "../../component/loading/ProductSkelet";
 import NewsCart from "../../component/Cart/NewsCart";
+import { getCategory } from "../../redux/actions/categoryActions";
+import MensFootwear from "./products-by-category/MensFootwear";
+import WomensFootwear from "./products-by-category/WomensFootwear";
+import MensClothing from "./products-by-category/MensClothing";
+import WomensClothing from "./products-by-category/WomensClothing";
+import Accessories from "./products-by-category/MensAccessories";
+import NewProducts from "./NewProducts";
+import MensAccessories from "./products-by-category/MensAccessories";
+import WomensAccessories from "./products-by-category/WomensAccessories";
+import ChildrenAccessories from "./products-by-category/ChildrenAccessories";
 const language = window.localStorage.getItem("novamarkt-Content-language");
 
 const API_URL = "https://admin-nova.ru";
@@ -34,20 +45,15 @@ const API_URL = "https://admin-nova.ru";
 const Product = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const matches = useMediaQuery("(min-width:767px)");
 
   useEffect(() => {
-    dispatch(getProductsAll());
-    dispatch(getPopularProducts({ page: 1, "per-page": 10 }));
-    dispatch(getBanners());
-    dispatch(getBrands());
+    // dispatch(getProductsAll());
+    // dispatch(getPopularProducts({ page: 1, "per-page": 10 }));
+    // dispatch(getBanners());
+    // dispatch(getBrands());
     dispatch(getNews({ page: 1, "per-page": 6 }));
+    // dispatch(getCategory());
   }, []);
-  useEffect(() => {
-    if (matches == true) {
-      dispatch(getSliders());
-    }
-  }, [matches]);
 
   const popularProducts = useSelector((state) => state.product.popularProducts);
   const { popularProductsLoading } = useSelector((state) => state.product);
@@ -164,7 +170,16 @@ const Product = () => {
           ))}
         </Swiper>
       </div>
-      <MContainer className="md:py-12 py-8">
+      <MensFootwear />
+      <WomensFootwear />
+      <NewProducts />
+      <MensClothing />
+      <WomensClothing />
+      <MensAccessories />
+      <WomensAccessories />
+      <ChildrenAccessories />
+
+      {/* <MContainer className="md:py-12 py-8">
         <Title
           nameUz="Ommabop tovarlar"
           name="Популярные товары"
@@ -191,8 +206,8 @@ const Product = () => {
             {language === "en" && "Show more"}
           </button>
         )}
-      </MContainer>
-      <AddedRecentlyProducts />
+      </MContainer> */}
+      {/* <AddedRecentlyProducts /> */}
       {news?.length > 0 && (
         <MContainer className="md:py-12 py-8">
           <Title nameUz="Yangiliklar" nameEn="News" name="Новости" />
@@ -203,14 +218,14 @@ const Product = () => {
           </div>
         </MContainer>
       )}
-      <MContainer className="md:py-16 py-8">
+      {/* <MContainer className="md:py-16 py-8">
         <Title
           nameUz="Yaqinda ko'rganlaringiz"
           name="Вы недавно смотрели"
           nameEn="Recently viewed"
         />
         <ProductsViewed />
-      </MContainer>
+      </MContainer> */}
     </>
   );
 };

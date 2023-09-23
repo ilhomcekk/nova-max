@@ -8,6 +8,7 @@ import cartReducer from "./cartReducer";
 import userReducer from "./userReducer";
 import filterReducer from "./filterReducer";
 import orderReducer from "./orderReducer";
+import { productsByCategory } from "./productsByCategoryReducer";
 // import messageReducer from "./messageReducer";
 
 const reducer = combineReducers({
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   user: userReducer,
   filter: filterReducer,
   order: orderReducer,
+  productsByCategory: productsByCategory,
   // message: messageReducer,
 });
 

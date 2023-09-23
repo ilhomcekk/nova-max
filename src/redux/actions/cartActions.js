@@ -112,12 +112,7 @@ export const getComments = (id) => (dispatch) => {
       dispatch({ type: "fetch_get_comments_success", payload: data });
     })
     .catch(({ response }) => {
-      let message =
-        (response && response.data.message) ||
-        "Вы можете оставить 1 комментарий";
-      toast.error("Зарегистрируйтесь, чтобы оставить комментарий");
-
-      dispatch({ type: "fetch_get_comments_error", payload: message });
+      dispatch({ type: "fetch_get_comments_error", payload: response });
     });
 };
 

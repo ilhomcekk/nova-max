@@ -8,32 +8,7 @@ import PreLoader from "./component/PreLoader/PreLoader";
 import Navbar from "./container/Navbar";
 import ScrollToTop from "./container/ScrollTop";
 import Footer from "./pages/footer/Footer";
-// import Product from "./pages/product/Product";
-// import NotFound from "./pages/notFound/NotFound";
-// import Info from "./pages/info/Info";
-// import DeliveryCart from "./pages/deliverycart/DeliveryCart";
-// import Selected from "./pages/selected/Selected";
-// import Basket from "./pages/basket/Basket";
-// import Deliveries from "./pages/delivery/Deliveries";
-// import ReturnProduct from "./pages/returnProduct/ReturnProduct";
-// import Offer from "./pages/offer/Offer";
-// import Cabinet from "./pages/cabinet/Cabinet";
-// import Questions from "./pages/questions/Questions";
-// import Contacts from "./pages/contacts/Contacts";
-// import MNews from "./pages/marketNews/MNews";
-// import Add from "./pages/add/Add";
-// import Filter from "./pages/filter/Filter";
-// import SubFilter from "./pages/filter/SubFilter";
-// import FirstRegister from "./pages/register/FirstRegister";
-// import SecondRegister from "./pages/register/SecondRegister";
-// import Recovery from "./pages/register/Recovery";
-// import Register from "./pages/register/Register";
-// import SearchProduct from "./pages/searchPage/SearchProduct";
-// import ProductsByCategory from "./pages/product/ProductsByCategory";
-// import Category from "./pages/category/Category";
-// import PopularProducts from "./pages/product/PopularProducts";
-// import RecentlyProducts from "./pages/product/RecentlyProducts";
-// import ProductsByBrand from "./pages/searchPage/ProductsByBrand";
+import NewProductsPage from "./pages/product/NewProductsPage";
 const Product = lazy(() => import("./pages/product/Product"));
 const NotFound = lazy(() => import("./pages/notFound/NotFound"));
 const Info = lazy(() => import("./pages/info/Info"));
@@ -73,20 +48,23 @@ const App = () => {
       <Navbar />
       <Suspense
         fallback={
-          <PreLoader
-            absolute={"fixed"}
-            top="50%"
-            left="50%"
-            transform="translate(-50%,-50%)"
-          />
+          <div className="fixed top-0 left-0 bg-white h-full w-full z-[100]">
+            <PreLoader
+              absolute={"fixed"}
+              top="50%"
+              left="50%"
+              transform="translate(-50%,-50%)"
+            />
+          </div>
         }
       >
-        <Routes path="/">
+        <Routes>
           <Route path="/" element={<Product />} />
           <Route path="/products-by-brand/:id" element={<ProductsByBrand />} />
           <Route path="/search/product/:slug/:id" element={<SearchProduct />} />
           <Route path="/search/product/:id" element={<SearchProduct />} />
           <Route path="/products/type=popular" element={<PopularProducts />} />
+          <Route path="/products/type=new" element={<NewProductsPage />} />
           <Route
             path="/products/type=recently"
             element={<RecentlyProducts />}

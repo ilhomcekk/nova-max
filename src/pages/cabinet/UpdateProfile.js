@@ -431,7 +431,7 @@ const UpdateProfile = ({ updateUser, onClickUpdateData }) => {
               </label>
             </div>
           </div> */}
-          <div className="info__user">
+          {/* <div className="info__user">
             <div className="title">Изменить пароль</div>
             <div
               className="change md:justify-start justify-between cursor-pointer"
@@ -444,7 +444,7 @@ const UpdateProfile = ({ updateUser, onClickUpdateData }) => {
                 <img src={cabinetEdit} alt="not found" />
               </label>
             </div>
-          </div>
+          </div> */}
           {/* <div className="info__user">
             <div className="title">Адресы</div>
             <div className="change flex-col">

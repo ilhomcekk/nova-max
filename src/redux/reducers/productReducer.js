@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   paymentList: [],
   unitList: [],
   loading: false,
+  newListPagination: {},
   bannersLoading: false,
   slidersLoading: false,
   brands_mainLoading: false,
@@ -70,6 +71,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
         ...state,
         loading: false,
         newList: payload.data,
+        newListPagination: payload?._meta,
       };
 
     // Fetch product one

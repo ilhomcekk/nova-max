@@ -34,7 +34,7 @@ const ProfileModal = ({ showModal, onClose, text }) => {
             className="!flex !mt-4"
             color="primary"
           >
-            <Link className="w-full" to="/register">
+            <Link className="w-full" to="/firstregister">
               Войти
             </Link>
           </Button>

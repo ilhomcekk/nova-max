@@ -40,7 +40,7 @@ const Registers = () => {
         <div className="px-8 py-6 w-3/12 rounded-md mt-4 text-left bg-white shadow-lg register__box">
           <div className="text-2xl font-bold text-center">Регистрация</div>
           <div className="mt-4">
-            <div>
+            {/* <div>
               <label className="block" htmlFor="email">
                 Имя
               </label>
@@ -52,7 +52,7 @@ const Registers = () => {
                   setName(e.target.value);
                 }}
               />
-            </div>
+            </div> */}
             {/* <div>
               <label className="block" htmlFor="email">
                 Фамилия
@@ -66,7 +66,7 @@ const Registers = () => {
                 }}
               />
             </div> */}
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <label className="block">Пароль</label>
               <div className="relative">
                 <input
@@ -99,8 +99,8 @@ const Registers = () => {
                   )}
                 </div>
               </div>
-            </div>
-            <div className="mt-4">
+            </div> */}
+            {/* <div className="mt-4">
               <label className="block">Повторите пароль</label>
               <div className="relative">
                 <input
@@ -133,7 +133,7 @@ const Registers = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="mt-4">
               <label className="block mb-2">Номер</label>
               <PhoneInput
@@ -163,21 +163,17 @@ const Registers = () => {
                 type="submit"
                 className="px-6 py-2 w-full mt-4 text-white"
                 onClick={() => {
-                  if (password === password2) {
-                    dispatch(
-                      authSignUp({
-                        name,
-                        // lastname,
-                        phone: `+${phone}`,
-                        password,
-                      })
-                    );
-                  } else {
-                    toast.error("Пароли не подходят");
-                  }
+                  dispatch(
+                    authSignUp({
+                      // name,
+                      // lastname,
+                      phone: `+${phone}`,
+                      // password,
+                    })
+                  );
                 }}
               >
-                Получить код
+                Отправить
               </button>
             </div>
           </div>

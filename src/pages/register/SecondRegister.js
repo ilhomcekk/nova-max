@@ -46,8 +46,7 @@ const Registers = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md !mb-0"
                   onChange={(e) => setValue(e.target.value)}
                   onKeyPress={(e: KeyboardEvent<HTMLDivElement>) =>
-                    e.key == "Enter" &&
-                    dispatch(postGetCode({ code: value, token: token }))
+                    e.key == "Enter" && dispatch(postGetCode({ code: value }))
                   }
                 />
                 <div className="text-sm text-right text-sky-700 m-0">
@@ -58,11 +57,11 @@ const Registers = () => {
               <div className="flex">
                 <div
                   onClick={() => {
-                    dispatch(postGetCode({ code: value, token: token }));
+                    dispatch(postGetCode({ code: value }));
                   }}
                   className="reg-btnbtn cursor-pointer text-center text-white w-full py-2 mt-2"
                 >
-                  Зарегистрироваться
+                  Войти
                 </div>
               </div>
               {/* <div className="flex items-baseline justify-between mt-2">
@@ -70,14 +69,14 @@ const Registers = () => {
               Регистрация
             </button>
           </div> */}
-              <div className="flex mt-2">
+              {/* <div className="flex mt-2">
                 <Link
                   to="/register"
                   className="registered text-sm text-sky-700 hover:underline"
                 >
                   Уже зарегистрирован?
                 </Link>
-              </div>
+              </div> */}
             </div>
           </form>
         </div>

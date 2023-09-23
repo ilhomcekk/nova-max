@@ -28,7 +28,6 @@ const ProductsByBrand = () => {
       ...pagination,
       page: metaNumber,
     };
-    setPagination(newPagination);
     dispatch(getProductsByBrand(id, newPagination));
   }, [metaNumber]);
 
@@ -72,7 +71,7 @@ const ProductsByBrand = () => {
           <Pagination
             onChange={onPageChange}
             count={productsByBrandPagination?.pageCount}
-            page={pagination?.page}
+            page={metaNumber}
             defaultPage={productsByBrandPagination?.currentPage}
             color="error"
           />

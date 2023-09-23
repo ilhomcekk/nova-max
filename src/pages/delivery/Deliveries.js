@@ -1,6 +1,6 @@
 import React from "react";
 import "../../assets/scss/_delivery.scss";
-import image39 from "../../assets/images/image 39.png";
+import image39 from "../../assets/images/cargo.avif";
 import image40 from "../../assets/images/Vector (16).png";
 import image41 from "../../assets/images/Vector (17).png";
 import image42 from "../../assets/images/Vector (18).png";

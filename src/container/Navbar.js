@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/scss/_navbar.scss";
+import "../assets/scss/_modal.scss";
 import { MContainer, MLink, MNavbar, MNav } from "../element/Elemens";
 import { HiUser } from "react-icons/hi";
 import { IoMdCube } from "react-icons/io";
@@ -13,7 +14,13 @@ import { FaRegUser } from "react-icons/fa";
 import { FiMenu, FiSearch } from "react-icons/fi";
 import { RiHeartFill } from "react-icons/ri";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Badge, Button, IconButton, Skeleton } from "@mui/material";
+import {
+  Badge,
+  Button,
+  IconButton,
+  Skeleton,
+  useMediaQuery,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/authActions";
 import {
@@ -28,6 +35,7 @@ import { getProductsByFilter } from "../redux/actions/filterActions";
 import ProfileModal from "../component/NoneProfileModal/ProfileModal";
 import { BsTelephone } from "react-icons/bs";
 import ErrorModal from "../component/ErrorModal/ErrorModal";
+import { getBrands, getSliders } from "../redux/actions/productActions";
 const URL = "https://admin-nova.ru/";
 const language = window.localStorage.getItem("novamarkt-Content-language");
 
@@ -86,6 +94,7 @@ const Navbar = () => {
   const openProfileMenuFun = (value) => {
     setOpenProfileMenu(value);
   };
+  const matches = useMediaQuery("(min-width:767px)");
 
   useEffect(() => {
     dispatch(getFavoriteAll());
@@ -93,7 +102,14 @@ const Navbar = () => {
     dispatch(getMe());
     dispatch(getlogo());
     dispatch(getCategory());
+    dispatch(getBrands());
   }, []);
+
+  useEffect(() => {
+    if (matches == true) {
+      dispatch(getSliders());
+    }
+  }, [matches]);
 
   const favoriteList = useSelector((state) => state.favorite.favoritiesList);
   const cartList = useSelector((state) => state.cart.list);
@@ -199,18 +215,26 @@ const Navbar = () => {
                             style={{ minHeight: "60px", height: "60px" }}
                           />
                         ))
-                      : navCategoryList.map((category, index) => (
+                      : navCategoryList?.map((category, index) => (
                           <li
                             key={index}
                             onClick={() => {
                               navigate(`/category/${category.id}`);
                               setOpenCategory(false);
                             }}
-                            className="flex items-center category__li"
+                            className={`flex items-center category__li tracking-[2px] !text-base ${
+                              category?.name === "Премиум" &&
+                              "!bg-[#4501BB] !text-[#fff] !font-bold !italic"
+                            }`}
                           >
                             <img
                               className="mr-3"
                               src={URL + category.photo}
+                              style={{
+                                filter:
+                                  category?.name === "Премиум" &&
+                                  "brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(227deg) brightness(106%) contrast(101%)",
+                              }}
                               alt=""
                             />
                             {category.name}
@@ -268,7 +292,7 @@ const Navbar = () => {
                         setFilterProduct(newFilter);
                         dispatch(getProductsByFilter(newFilter));
                       }}
-                      onKeyPress={(e: KeyboardEvent<HTMLDivElement>) =>
+                      onKeyPress={(e) =>
                         e.key === "Enter" &&
                         navigate(`/search/product/${e.target.value}/1`)
                       }
@@ -575,7 +599,7 @@ const Navbar = () => {
                   setFilterProduct(newFilter);
                   dispatch(getProductsByFilter(newFilter));
                 }}
-                onKeyPress={(e: KeyboardEvent<HTMLDivElement>) =>
+                onKeyPress={(e) =>
                   e.key === "Enter" &&
                   navigate(`/search/product/${e.target.value}/1`)
                 }
@@ -694,7 +718,7 @@ const Navbar = () => {
                   className="!w-full"
                   color="primary"
                   onClick={() => {
-                    navigate("/register");
+                    navigate("/firstregister");
                   }}
                 >
                   Войти

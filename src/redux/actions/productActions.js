@@ -44,11 +44,11 @@ export const getRecentlyProducts = (params) => (dispatch) => {
     });
 };
 
-export const getProductSortNew = () => (dispatch) => {
-  dispatch({ type: "fetch_new_products_start" });
+export const getProductSortNew = (params) => (dispatch) => {
+  dispatch({ type: "fetch_new_products_start", payload: params });
 
   requests
-    .getProductSortNew()
+    .getProductSortNew(params)
     .then(({ data }) => {
       dispatch({ type: "fetch_new_products_success", payload: data });
     })
@@ -166,7 +166,6 @@ export const getBrands = () => (dispatch) => {
       dispatch({ type: "fetch_get_brands_success", payload: data });
     })
     .catch(({ response }) => {
-
       dispatch({ type: "fetch_get_brands_error" });
     });
 };

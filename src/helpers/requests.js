@@ -10,19 +10,14 @@ const token = window.localStorage.getItem("novamarktToken");
 const language = window.localStorage.getItem("novamarkt-Content-language");
 const region = window.localStorage.getItem("novamarkt-Content-region");
 const currency = window.localStorage.getItem("novamarkt-Content-currency");
-const langFunc = () => {
-  if (language === null) {
-    window.location.reload();
-  }
-};
-langFunc();
+window.localStorage.setItem("novamarkt-Content-language", "ru");
 
 const config = {
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-language": "ru",
     "Content-region": region,
-    // "Content-currency": currency,
+    // "Content-currency": "Сум",
   },
 };
 
@@ -76,11 +71,15 @@ const request = {
     }),
   getProductPriceDown: () => axios.get(`${URL}/product?sort=price_down`),
   getProductPriceUp: () => axios.get(`${URL}/product?sort=price_up`),
-  getProductSortNew: () => axios.get(`${URL}/product?sort=new`),
+  getProductSortNew: (params) =>
+    axios.get(`${URL}/product?sort=new`, { params }),
   getRecentlyProducts: (params) =>
     axios.get(`${URL}/product?sort=recently`, { params, ...config }),
   getPopularProducts: (params) =>
     axios.get(`${URL}/product?sort=popular`, { params }),
+  // PRODUCTS BY CATEGORY
+  getProductByCategory: (params) =>
+    axios.get(`${URL}/product/by-category`, { params }),
   // // Товары end => =========================
 
   getRegions: () => axios.get(`${URL}/category?type=region`, config),

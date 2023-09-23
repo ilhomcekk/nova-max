@@ -24,7 +24,7 @@ export default function Register() {
       .then(({ data }) => {
         dispatch({ type: "auth_login_success", payload: data });
         toast.success("Успешно");
-        navigate("/");
+        navigate("/second-register");
         window.location.reload();
       })
       .catch(({ response }) => {
@@ -73,7 +73,7 @@ export default function Register() {
                 }}
               /> */}
             </div>
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <label className="block">Пароль</label>
               <div className="relative">
                 <input
@@ -85,7 +85,7 @@ export default function Register() {
                   }}
                   onKeyPress={(e: KeyboardEvent<HTMLDivElement>) =>
                     e.key == "Enter" &&
-                    dispatch(authSignIn({ phone: `+${phone}`, password }))
+                    dispatch(authSignIn({ phone: `+${phone}` }))
                   }
                 />
                 <div
@@ -99,19 +99,19 @@ export default function Register() {
                   )}
                 </div>
               </div>
-            </div>
-            <Link
+            </div> */}
+            {/* <Link
               className="text-sm text-sky-700 hover:underline"
               to={"/recovery"}
             >
               забыли пароль?
-            </Link>
+            </Link> */}
             <div className="flex items-baseline justify-between">
               <button
                 type="submit"
                 className="px-6 py-2 w-full mt-4 text-white"
                 onClick={() => {
-                  dispatch(authSignIn({ phone: `+${phone}`, password }));
+                  dispatch(authSignIn({ phone: `+${phone}` }));
                 }}
               >
                 Войти

@@ -419,7 +419,7 @@ const Basket = () => {
                 <label className="basket__spec flex items-center">
                   <input defaultChecked className="mr-2" type="checkbox" />
                   <span>
-                    Правил пользования торговой площадкой и правилами возврата
+                    Согласен с правилами пользования торговой площадкой и правилами возврата
                   </span>
                 </label>
               </div>
