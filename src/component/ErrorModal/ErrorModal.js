@@ -15,17 +15,7 @@ const ErrorModal = ({ showModal, onClose, text }) => {
         <div className="error-modal">
           <div className="text-xl">{text}</div>
           <img src={registerPhoto} className="my-5" alt="" />
-          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
-            <Button
-              onClick={() => {
-                navigate("/firstregister");
-                onClose();
-              }}
-              variant="outlined"
-              color="error"
-            >
-              Войти
-            </Button>
+          <div className="grid">
             <Button
               onClick={() => {
                 navigate("/firstregister");
@@ -34,8 +24,18 @@ const ErrorModal = ({ showModal, onClose, text }) => {
               variant="outlined"
               color="primary"
             >
-              Зарегистрироваться
+              Войти
             </Button>
+            {/* <Button
+              onClick={() => {
+                navigate("/firstregister");
+                onClose();
+              }}
+              variant="outlined"
+              color="primary"
+            >
+              Зарегистрироваться
+            </Button> */}
           </div>
         </div>
         {/* <div
