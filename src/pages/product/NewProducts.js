@@ -20,12 +20,12 @@ export default function NewProducts() {
     "per-page": 10,
   });
 
-  useEffect(() => {
-    dispatch(getProductSortNew(params));
-  }, []);
-
   const { loading } = useSelector((state) => state.product);
   const productsList = useSelector((state) => state.product.newList);
+
+  useEffect(() => {
+    if (productsList?.length === 0)    dispatch(getProductSortNew(params));
+  }, [productsList]);
 
   return (
     <>

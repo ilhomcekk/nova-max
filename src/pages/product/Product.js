@@ -170,15 +170,16 @@ const Product = () => {
           ))}
         </Swiper>
       </div>
+      asdasd
+      <MensClothing />
+      sadadas
+      <WomensClothing />
+      <NewProducts />
       <MensFootwear />
       <WomensFootwear />
-      <NewProducts />
-      <MensClothing />
-      <WomensClothing />
       <MensAccessories />
       <WomensAccessories />
       <ChildrenAccessories />
-
       {/* <MContainer className="md:py-12 py-8">
         <Title
           nameUz="Ommabop tovarlar"

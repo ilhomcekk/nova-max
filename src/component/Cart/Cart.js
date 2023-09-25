@@ -148,14 +148,7 @@ export const Cart = ({ product }) => {
             </MLink>
             {product?.price !== false && (
               <div className="cart__price">
-                <h5>
-                  {currency === "Сум" && product?.price
-                    ? product?.price?.toLocaleString("ru-RU") + " " + "₽"
-                    : undefined}
-                  {currency === "У.е." && product?.price_usd
-                    ? product?.price_usd + " " + "У.е."
-                    : undefined}
-                </h5>
+                <h5>{product?.price?.toLocaleString("ru-RU") + " " + "₽"}</h5>
                 {price_old && (
                   <p className="">
                     {price_old} ₽
