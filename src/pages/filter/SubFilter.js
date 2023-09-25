@@ -51,7 +51,6 @@ import {
 } from "../../redux/actions/categoryActions";
 import PreLoader from "../../component/PreLoader/PreLoader";
 import FilterSwitch from "./FilterSwitch";
-import { Form } from "react-final-form";
 import e from "cors";
 import { IoIosArrowDown } from "react-icons/io";
 import ProductSkelet from "../../component/loading/ProductSkelet";

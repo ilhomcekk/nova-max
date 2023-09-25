@@ -31,7 +31,7 @@ export const postGetCode = (params) => (dispatch) => {
       toast.success("Успешно");
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Login error";
+      let message = (response && response?.data?.message) || "Login error";
       toast.error(message);
 
       dispatch({ type: "auth_get_code_error", payload: message });
@@ -50,7 +50,7 @@ const authSignIn = (params) => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) || "Не верный логин и/или пароль";
+        (response && response?.data?.message) || "Не верный логин и/или пароль";
       toast.error(message);
       // toast.error("Вам нужно зарегистрироваться");
 
@@ -71,7 +71,7 @@ export const removeAccount = (params) => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) || "Не удалось удалить аккаунт";
+        (response && response?.data?.message) || "Не удалось удалить аккаунт";
       toast.error(message);
 
       dispatch({ type: "remove_account_error", payload: message });

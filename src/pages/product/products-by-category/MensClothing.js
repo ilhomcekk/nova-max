@@ -24,7 +24,12 @@ const MensClothing = () => {
 
   const handleProducts = async () => {
     setLoading(true);
-    await dispatch(fetchMensClothing(params));
+    try{
+      await dispatch(fetchMensClothing(params));
+    }
+    catch(err){
+      console.log(err);
+    }
     setLoading(false);
   };
 

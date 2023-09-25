@@ -11,7 +11,7 @@ export const getMe = (params) => (dispatch) => {
       dispatch({ type: "fetch_user_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "User not found";
+      let message = (response && response?.data?.message) || "User not found";
       // toast.error(message);
       // toast.error("Вам нужно зарегистрироваться");
 

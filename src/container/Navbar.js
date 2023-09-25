@@ -101,9 +101,9 @@ const Navbar = () => {
     dispatch(getCart());
     dispatch(getMe());
     dispatch(getlogo());
-    dispatch(getCategory());
     dispatch(getBrands());
   }, []);
+
 
   useEffect(() => {
     if (matches == true) {
@@ -129,6 +129,11 @@ const Navbar = () => {
     }
   };
   const [showFavorite, setShowFavorite] = useState(false);
+
+  useEffect(() => {
+    if(navCategoryList?.length === 0)
+    dispatch(getCategory())
+  },[navCategoryList])
 
   return (
     <>
@@ -444,12 +449,12 @@ const Navbar = () => {
                                   Мои заказы
                                 </Link>
                               </li>
-                              <li className="profile__item">
+                              {/* <li className="profile__item">
                                 <Link to="/message">
                                   <AiOutlineRight />
                                   Мои сообщения
                                 </Link>
-                              </li>
+                              </li> */}
                               <li className="profile__item">
                                 <Link to="/selected">
                                   <AiOutlineRight />

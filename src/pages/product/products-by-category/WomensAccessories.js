@@ -24,12 +24,17 @@ const WomensAccessories = () => {
 
   const handleProducts = async () => {
     setLoading(true);
-    await dispatch(fetchWomensAccessories(params));
+    try{
+      await dispatch(fetchWomensAccessories(params));
+    }
+    catch(err){
+      console.log(err);
+    }
     setLoading(false);
   };
 
   useEffect(() => {
-    if (products?.data?.length === 0) handleProducts();
+    if (products?.length === 0) handleProducts();
   }, [products]);
 
   return (

@@ -119,7 +119,7 @@ export const getTransaction = () => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) ||
+        (response && response?.data?.message) ||
         dispatch({ type: "fetch_get_transaction_error", payload: message });
     });
 };
@@ -150,7 +150,7 @@ export const refundList = () => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) ||
+        (response && response?.data?.message) ||
         dispatch({ type: "fetch_refunds_error", payload: message });
     });
 };

@@ -46,15 +46,6 @@ const Product = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // dispatch(getProductsAll());
-    // dispatch(getPopularProducts({ page: 1, "per-page": 10 }));
-    // dispatch(getBanners());
-    // dispatch(getBrands());
-    dispatch(getNews({ page: 1, "per-page": 6 }));
-    // dispatch(getCategory());
-  }, []);
-
   const popularProducts = useSelector((state) => state.product.popularProducts);
   const { popularProductsLoading } = useSelector((state) => state.product);
   const sliders = useSelector((state) => state.product.sliders);
@@ -71,6 +62,15 @@ const Product = () => {
   const get_brands = useSelector((state) => state.product.brands_main);
   const { brands_mainLoading } = useSelector((state) => state.product);
   const news = useSelector((state) => state.news.news);
+
+  useEffect(() => {
+    // dispatch(getProductsAll());
+    // dispatch(getPopularProducts({ page: 1, "per-page": 10 }));
+    // dispatch(getBanners());
+    // dispatch(getBrands());
+    if(news?.length === 0)  dispatch(getNews({ page: 1, "per-page": 6 }));
+    // dispatch(getCategory());
+  }, [news]);
 
   return (
     <>
@@ -170,9 +170,7 @@ const Product = () => {
           ))}
         </Swiper>
       </div>
-      asdasd
       <MensClothing />
-      sadadas
       <WomensClothing />
       <NewProducts />
       <MensFootwear />

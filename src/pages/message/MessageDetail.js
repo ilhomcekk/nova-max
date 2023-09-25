@@ -121,12 +121,12 @@ const MessageDetail = () => {
             ))} */}
               {detail?.map((message, idx) => (
                 <div key={idx}>
-                  {message.messageRoom?.getter_id ===
+                  {message?.messageRoom?.getter_id ===
                   message?.messageRoom?.id ? (
-                    <p>{message.message}</p>
+                    <p>{message?.message}</p>
                   ) : (
                     <div className="admin__text">
-                      {message.message}
+                      {message?.message}
                       <img
                         id="avatarImage"
                         src={API + message.filePath}

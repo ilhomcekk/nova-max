@@ -11,7 +11,7 @@ export const getProductsByFilter = (params) => (dispatch) => {
       dispatch({ type: "fetch_products_filter_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       // toast.error(message);
 
       dispatch({ type: "fetch_products_filter_error", payload: message });
@@ -27,7 +27,7 @@ export const productsByPhoto = (params) => (dispatch) => {
       dispatch({ type: "products_by_photo_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       // toast.error(message);
 
       dispatch({ type: "products_by_photo_error", payload: message });
@@ -43,7 +43,7 @@ export const getProductGalleryAll = (id, params) => (dispatch) => {
       dispatch({ type: "fetch_product_gallery_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
 
       dispatch({ type: "fetch_product_gallery_error", payload: message });
     });
@@ -58,7 +58,7 @@ export const getProductPriceDown = () => (dispatch) => {
       dispatch({ type: "fetch_product_price_down_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
 
       dispatch({ type: "fetch_product_price_down_error", payload: message });
     });
@@ -73,7 +73,7 @@ export const getProductPriceUp = () => (dispatch) => {
       dispatch({ type: "fetch_product_price_up_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
 
       dispatch({ type: "fetch_product_price_up_error", payload: message });
     });
@@ -88,7 +88,7 @@ export const getProductSortNew = () => (dispatch) => {
       dispatch({ type: "fetch_product_sort_new_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
 
       dispatch({ type: "fetch_product_sort_new_error", payload: message });
     });
@@ -117,7 +117,7 @@ export const getBrands = (params) => (dispatch) => {
       dispatch({ type: "fetch_get_brands_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       // toast.error(message);
 
       dispatch({ type: "fetch_get_brands_error", payload: message });

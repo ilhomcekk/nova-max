@@ -48,7 +48,7 @@ export const postCartMinus = (params) => (dispatch) => {
       dispatch({ type: "increment_cart_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       toast.error(message);
 
       dispatch({ type: "increment_cart_error", payload: message });
@@ -64,7 +64,7 @@ export const decrementProduct = (params) => (dispatch) => {
       dispatch({ type: "decrement_cart_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       toast.error(message);
 
       dispatch({ type: "decrement_cart_error", payload: message });
@@ -80,7 +80,7 @@ export const postCartRemove = (id) => (dispatch) => {
       dispatch({ type: "remove_cart_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       toast.error(message);
 
       dispatch({ type: "remove_cart_error", payload: message });
@@ -96,7 +96,7 @@ export const postCartClear = (params) => (dispatch) => {
       dispatch({ type: "clear_cart_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       toast.error(message);
 
       dispatch({ type: "clear_cart_error", payload: message });
@@ -151,7 +151,7 @@ export const getCommentFilterWithRate = (id) => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) ||
+        (response && response?.data?.message) ||
         dispatch({ type: "fetch_get_comment_rate_error", payload: message });
     });
 };
@@ -166,7 +166,7 @@ export const getCommentFilterWithDate = (id) => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) ||
+        (response && response?.data?.message) ||
         dispatch({ type: "fetch_get_comment_date_error", payload: message });
     });
 };

@@ -24,7 +24,12 @@ const ChildrenAccessories = () => {
 
   const handleProducts = async () => {
     setLoading(true);
-    await dispatch(fetchChildrenAccessories(params));
+    try{
+      await dispatch(fetchChildrenAccessories(params));
+    }
+    catch(err){
+      console.log(err);
+    }
     setLoading(false);
   };
 

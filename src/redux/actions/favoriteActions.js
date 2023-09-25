@@ -27,7 +27,7 @@ export const getFavoriteAll = () => (dispatch) => {
       dispatch({ type: "fetch_favorite_all_success", payload: data });
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "Product list not";
+      let message = (response && response?.data?.message) || "Product list not";
       // toast.error(message);
       // toast.error("Вам нужно зарегистрироваться");
       dispatch({ type: "fetch_favorite_all_error", payload: message });

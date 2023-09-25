@@ -99,7 +99,7 @@ const Basket = () => {
         dispatch({ type: "create_check_success", payload: data });
       })
       .catch(({ response }) => {
-        let message = response && response.data.errors.message;
+        let message = response && response?.data?.errors?.message;
         toast.error(message);
 
         dispatch({ type: "create_check_error", payload: message });

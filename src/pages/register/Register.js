@@ -28,7 +28,7 @@ export default function Register() {
         window.location.reload();
       })
       .catch(({ response }) => {
-        let message = (response && response.data.message) || "Login error";
+        let message = (response && response?.data?.message) || "Login error";
         toast.error(message);
         // toast.error("Вам нужно зарегистрироваться");
 
